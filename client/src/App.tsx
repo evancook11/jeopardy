@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import { Navbar } from './components/navbar/Navbar';
 
 function App() {
+
+  useEffect(() => {
+    fetch("/api")
+      .then((res) => res.json())
+      .then((data) => console.log(data.message));
+  }, []);
+
   return (
     <div className='app'>
       <Navbar></Navbar>
