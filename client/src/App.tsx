@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import { Navbar } from './components/navbar/Navbar';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from './pages/Layout';
+import Home from './pages/Home';
 
 function App() {
 
@@ -11,12 +14,13 @@ function App() {
   }, []);
 
   return (
-    <div className='app'>
-      <Navbar></Navbar>
-      <div className='d-flex justify-content-around align-items-center bg-info flex-grow-1'>
-        <h1 className='text-white title'>Welcome to Jeopardy!</h1>
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Layout />}>
+          <Route index element={<Home />}></Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
